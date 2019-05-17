@@ -6,7 +6,7 @@ RUN yarn install
 
 COPY lib lib
 COPY tsconfig.json tsconfig.json
-
+COPY tsconfig.app.json .
 RUN yarn build
 
 
@@ -106,6 +106,11 @@ RUN apt-get update && apt-get install -y python3.7-dev python3-distutils && apt-
 
 RUN rm -fr /usr/bin/python3 && ln /usr/bin/python3.7 /usr/bin/python3
 RUN rm -rf /usr/bin/python && ln /usr/bin/python3.7 /usr/bin/python
+
+# Cocoapods
+
+RUN apt-get update && apt-get install -y ruby && apt-get clean
+RUN gem install cocoapods
 
 # Pip
 
